@@ -1,0 +1,16 @@
+domain: hao.io
+layout:
+- go.kubebuilder.io/v3
+projectName: queue-test
+repo: github.com/haoshuwei24/queue-test
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: hao.io
+  group: queue.io
+  kind: Queue
+  path: github.com/haoshuwei24/queue-test/api/v1alpha1
+  version: v1alpha1
+version: "3"
