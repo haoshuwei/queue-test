@@ -30,12 +30,14 @@ type QueueSpec struct {
 
 	// Foo is an example field of Queue. Edit queue_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
+	ConsumerRef ConsumerRef `json:"consumerRef,omitempty"`
 }
 
 // QueueStatus defines the observed state of Queue
 type QueueStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Status string `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
@@ -57,6 +59,14 @@ type QueueList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []Queue `json:"items"`
+}
+
+// ConsumerRef defines the desired state of ConsumerRef
+type ConsumerRef struct {
+	ApiVersion string `json:"apiVersion,omitempty"`
+	Kind string `json:"kind,omitempty"`
+	Name string `json:"name,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
 }
 
 func init() {

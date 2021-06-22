@@ -50,6 +50,18 @@ func (r *QueueReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 	_ = log.FromContext(ctx)
 
 	// your logic here
+	obj := &queueiov1alpha1.Queue{}
+	if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
+		log.FromContext(ctx).Error(err, "Failed to get object.")
+		return ctrl.Result{}, err
+	}
+
+	log.FromContext(ctx).Info("Succeed to get object's apiVersion: %s, Kind: %s, Name: %s, Namespace: %s", obj.Spec.ConsumerRef.ApiVersion, obj.Spec.ConsumerRef.Kind, obj.Spec.ConsumerRef.Name, obj.Spec.ConsumerRef.Namespace)
+
+	obj.Status.Status = "Running"
+	if err := r.Status().Update(ctx, obj); err != nil {
+		log.FromContext(ctx).Error(err, "Failed to update obj %s", obj.Name)
+	}
 
 	return ctrl.Result{}, nil
 }
