@@ -29,7 +29,7 @@ type QueueSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of Queue. Edit queue_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Foo         string      `json:"foo,omitempty"`
 	ConsumerRef ConsumerRef `json:"consumerRef,omitempty"`
 }
 
@@ -64,9 +64,9 @@ type QueueList struct {
 // ConsumerRef defines the desired state of ConsumerRef
 type ConsumerRef struct {
 	ApiVersion string `json:"apiVersion,omitempty"`
-	Kind string `json:"kind,omitempty"`
-	Name string `json:"name,omitempty"`
-	Namespace string `json:"namespace,omitempty"`
+	Kind       string `json:"kind,omitempty"`
+	Name       string `json:"name,omitempty"`
+	Namespace  string `json:"namespace,omitempty"`
 }
 
 func init() {

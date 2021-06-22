@@ -56,7 +56,7 @@ func (r *QueueReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 		return ctrl.Result{}, err
 	}
 
-	log.FromContext(ctx).Info("Succeed to get object's apiVersion: %s, Kind: %s, Name: %s, Namespace: %s", obj.Spec.ConsumerRef.ApiVersion, obj.Spec.ConsumerRef.Kind, obj.Spec.ConsumerRef.Name, obj.Spec.ConsumerRef.Namespace)
+	log.FromContext(ctx).Info("Succeed to get object's apiVersion: " + obj.Spec.ConsumerRef.ApiVersion + ", Kind: " + obj.Spec.ConsumerRef.Kind + ", Name: " + obj.Spec.ConsumerRef.Name + ", Namespace: " + obj.Spec.ConsumerRef.Namespace)
 
 	obj.Status.Status = "Running"
 	if err := r.Status().Update(ctx, obj); err != nil {
